@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static com.javatrap.healthpatientmassage.links.PatientLinks.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-@Document(collation = "messages")
+@Document(collation = MESSAGES)
 public class MessageRead {
     @Id
     private String id;
