@@ -20,6 +20,7 @@ import java.util.Set;
 public class MessageRead {
     @Id
     private String id;
+    private Long patientId;
     private Set<Message> messages = new LinkedHashSet<>();
 
 
