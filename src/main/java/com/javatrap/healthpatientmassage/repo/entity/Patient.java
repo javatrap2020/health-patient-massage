@@ -21,15 +21,16 @@ import static com.javatrap.healthpatientmassage.links.PatientLinks.*;
 @Setter
 
 @Entity
-@Table(name = PATIENTS)
+@Table(name = TAB_PATIENTS)
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long patientId;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false, unique = true)
     private String email;
+
 }

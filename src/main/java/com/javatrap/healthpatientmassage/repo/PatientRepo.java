@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface PatientRepo extends JpaRepository<Patient, Long> {
     Optional<Patient> findPatientByEmail(@Param(EMAIL) String email);
+
 }

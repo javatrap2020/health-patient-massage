@@ -15,15 +15,15 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 public class MessageReadDto {
-    private String id;
+    private String messageId;
     private PatientDto patient;
     private Set<MessageDto> messages;
 
     public static List<MessageReadDto> map(List<MessageRead> messageList, Set<Patient> patientSet) {
         return messageList.stream().map(message ->
                 MessageReadDto.builder()
-        .id(message.getId())
-        .patient(patientSet.stream().filter(patient1 -> patient1.getId().equals(message.getPatientId()))
+        .messageId(message.getMessageId())
+        .patient(patientSet.stream().filter(patient1 -> patient1.getPatientId().equals(message.getMessageId()))
         .map(PatientDto::map).findFirst().orElse(null))
         .build())
         .collect(Collectors.toList());

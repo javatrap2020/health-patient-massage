@@ -8,6 +8,8 @@ public interface PatientService {
 
     PatientDto update(PatientDto patientDto);
 
+    PatientDto save(PatientDto patientDto);
+
     PatientDto getPatientById(Long patientId);
 
     List<PatientDto> getAllPatients();

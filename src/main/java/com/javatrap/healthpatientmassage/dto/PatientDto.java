@@ -14,9 +14,9 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Builder
 public class PatientDto {
-    private Long id;
+    private Long patientId;
     @NotBlank(message = "Name shouldn't be empty")
-    private String firstMame;
+    private String firstName;
     @NotBlank(message = "Last name shouldn't be empty")
     private String lastName;
     @Email(message = "Please enter valid email")
@@ -24,8 +24,8 @@ public class PatientDto {
 
     public static Patient map(PatientDto patientDto) {
         return Patient.builder()
-                .id(patientDto.getId())
-                .firstName(patientDto.getFirstMame())
+                .patientId(patientDto.getPatientId())
+                .firstName(patientDto.getFirstName())
                 .lastName(patientDto.getLastName())
                 .email(patientDto.getEmail())
                 .build();
@@ -33,8 +33,8 @@ public class PatientDto {
 
     public static PatientDto map(Patient patient) {
         return PatientDto.builder()
-                .id(patient.getId())
-                .firstMame(patient.getFirstName())
+                .patientId(patient.getPatientId())
+                .firstName(patient.getFirstName())
                 .lastName(patient.getLastName())
                 .email(patient.getEmail())
                 .build();

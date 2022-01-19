@@ -21,9 +21,8 @@ import static com.javatrap.healthpatientmassage.links.PatientLinks.*;
 @Document(collation = MESSAGES)
 public class MessageRead {
     @Id
-    private String id;
+    private String messageId;
     private Long patientId;
     private Set<Message> messages = new LinkedHashSet<>();
-
 
 }
