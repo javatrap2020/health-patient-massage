@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //import javax.transaction.Transactional;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import static com.javatrap.healthpatientmassage.links.PatientLinks.*;
@@ -27,13 +28,13 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @PostMapping()
+    @PostMapping(API_PATIENT)
     @Transactional
-    public PatientDto save(@RequestBody PatientDto patientDto) {
+    public PatientDto save(@RequestBody PatientDto patientDto) throws UnknownHostException {
         return patientService.save(patientDto);
     }
 
-    @PutMapping()
+    @PutMapping(API_PATIENT)
     @Transactional
     public PatientDto update(@RequestBody PatientDto patientDto) {
         return patientService.update(patientDto);

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +33,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientDto update(PatientDto patientDto) {
-        log.info("Updating user {}", patientDto);
+        log.info("Updating patient {}", patientDto);
         Patient patient = patientRepo.findPatientByEmail(patientDto.getEmail()).orElseThrow(PatientNotFoundException::new);
         patient.setFirstName(patientDto.getFirstName());
         patient.setLastName(patientDto.getLastName());
@@ -39,13 +41,16 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDto save(PatientDto patientDto) {
+    public PatientDto save(PatientDto patientDto) throws UnknownHostException {
         if (patientRepo.findPatientByEmail(patientDto.getEmail()).isPresent()) {
             throw  new PatientAlreadyExistException();
         }
         Patient patient = patientRepo.save(PatientDto.map(patientDto));
         log.info("Creating new patient {}", patientDto);
+        InetAddress inetAddress = InetAddress.getLocalHost();
+        log.info("Find patient by localhost {}" + inetAddress.getHostAddress());
         return PatientDto.map(patient);
+
     }
 
     @Override
